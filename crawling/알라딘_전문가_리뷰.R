@@ -15,10 +15,12 @@ html %>%
   html_nodes('.score_result') %>%
   html_nodes('li') -> lis
 lis
+
 score <- c()
 reple <- c()
 company <- c()
 name <- c()
+
 for (li in lis) {
   star_score <- html_node(li, '.star_score')
   score <- c(score, trim(html_text(star_score, 'em')))
