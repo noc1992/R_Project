@@ -1,7 +1,7 @@
 library(KoNLP)
 # remove.packages("rJava")
 # install.packages("rJava")
-library(xlsx)
+# library(xlsx)
 library(dplyr)
 library(stringr)
 library(wordcloud2)
@@ -36,13 +36,28 @@ rl <- gsub("이","",rl)
 rl <- gsub("이영","",rl)
 rl <- gsub("몇","",rl)
 rl <- gsub("년","",rl)
+rl <- gsub("수","",rl)
 
-rle <- lapply(rl, extractNoun)
-rlf <- Filter(function(x) ( nchar(x) <= 7 & nchar(x) >= 2 ),rle)
+rll <- lapply(rl, extractNoun)
+
+rll <- gsub("를","",rll)
+rll <- gsub("나","",rll)
+rll <- gsub("런","",rll)
+rll <- gsub("제","",rll)
+rll <- gsub("을","",rll)
+rll <- gsub("만","",rll)
+rll <- gsub("것","",rll)
+rll <- gsub("볼","",rll)
+rll <- gsub("위","",rll)
+rll <- gsub("들","",rll)
+rll <- gsub("라","",rll)
+rlf <- Filter(function(x) ( nchar(x) <= 7 & nchar(x) >= 2),rll)
 
 rlu <- unlist(rlf)
 sw <- sort(table(rlu), decreasing = T)
-wordc <- table(sw, decresing=T)
-head(sw)
+head(sw,30)
 wordcloud2(sw)
+
+
+
 
