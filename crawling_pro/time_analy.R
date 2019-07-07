@@ -9,12 +9,6 @@ library(nycflights13)
 library(tidyverse)
 library(lubridate)
 
-
-font_import(pattern = 'BMHANNAPro')
-loadfonts()
-fonts()
-windowsFonts(bm=windowsFont("BMHANNAPro"))
-
 data <- read.csv("cine.csv", encoding = "euc-kr")
 head(data)
 
@@ -43,11 +37,11 @@ View(da1)
 
 ggplot(da1, aes(x=Hour,y=mean)) +
   geom_point(size=4,aes(col = Hour)) +
-  theme_bw(base_family = "Malgun Gothic", base_size = 8) +
+  theme_bw(base_family = "godoM", base_size = 8) +
   geom_text(aes(label=sprintf("%.2f",mean)),size=4,hjust=1,vjust=0) +
   geom_line(linetype = "dashed") + ggtitle("시간대별 평균 평점 비교") + 
   labs(x="시간대", y="평점") +
-  theme(plot.title=element_text(family="Malgun Gothic", face="bold",size=17, color='darkblue'),
+  theme(plot.title=element_text(family="godoM", face="bold",size=17, color='darkblue'),
         axis.title=element_text(size=13),
         axis.title.y=element_text(angle=0),
         axis.text.x=element_text(angle=90, size=10))

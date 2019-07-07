@@ -21,36 +21,18 @@ rl <- gsub("\\n","",rl)
 rl <- gsub("\\.","",rl)
 rl <- gsub("\n","",rl)
 rl <- gsub("-","",rl)
-rl <- gsub("영화","",rl)
-rl <- gsub("한","",rl)
-rl <- gsub("말","",rl)
-rl <- gsub("것","",rl)
-rl <- gsub("번","",rl)
-rl <- gsub("내","",rl)
-rl <- gsub("점","",rl)
-rl <- gsub("때","",rl)
-rl <- gsub("화","",rl)
-rl <- gsub("적","",rl)
-rl <- gsub("중","",rl)
-rl <- gsub("이","",rl)
-rl <- gsub("이영","",rl)
-rl <- gsub("몇","",rl)
-rl <- gsub("년","",rl)
-rl <- gsub("수","",rl)
+
 
 rll <- lapply(rl, extractNoun)
+rll
 
-rll <- gsub("를","",rll)
-rll <- gsub("나","",rll)
-rll <- gsub("런","",rll)
-rll <- gsub("제","",rll)
-rll <- gsub("을","",rll)
-rll <- gsub("만","",rll)
-rll <- gsub("것","",rll)
-rll <- gsub("볼","",rll)
-rll <- gsub("위","",rll)
-rll <- gsub("들","",rll)
-rll <- gsub("라","",rll)
+gsub_txt <- readLines("c_gsub.txt")
+cnt_txt <- length(gsub_txt)
+
+for (i in 1:cnt_txt) {
+  rll <- gsub((gsub_txt[i]),"",rll)
+}
+
 rlf <- Filter(function(x) ( nchar(x) <= 7 & nchar(x) >= 2),rll)
 
 rlu <- unlist(rlf)
