@@ -1,5 +1,6 @@
 library(KoNLP)
 library(dplyr)
+library(digest)
 library(stringr)
 library(wordcloud2)
 library(tm)
@@ -34,8 +35,8 @@ rlf <- Filter(function(x) ( nchar(x) <= 7 & nchar(x) >= 2),rll)
 
 rlu <- unlist(rlf)
 sw <- sort(table(rlf), decreasing = T)
-head(sw,30)
-wordcloud2(sw)
+a <- head(sw,40)
+wordcloud2(a)
 
 
 
